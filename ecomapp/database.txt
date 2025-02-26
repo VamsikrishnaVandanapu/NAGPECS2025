@@ -1,0 +1,23 @@
+INSERT INTO categories (name, description, image_url)
+VALUES ('Men', 'Mens Clothing', 'https://media.istockphoto.com/id/1293366109/photo/this-one-match-perfect-with-me.jpg?s=612x612&w=0&k=20&c=wJ6yYbRrDfdmoViuQkX39s2z_0lCiNQYgEtLU--0EbY=');
+INSERT INTO categories (name, description, image_url)
+VALUES ('Women', 'Womens Clothing', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScvfJWAC-qmbYXRSWh9aAlVh10u9LazklzcA&s');
+INSERT INTO categories (name, description, image_url)
+VALUES ('Kids', 'Kids Clothing', 'https://thumbs.dreamstime.com/b/children-modern-clothes-collage-isolated-female-kid-s-set-clothing-46844783.jpg');
+
+
+
+INSERT INTO products (category_id,id,name, description,price, image_url)
+VALUES ('14','1','Trousers', 'Mens Trousers',100, 'https://www.shutterstock.com/image-photo/group-successful-confident-business-people-260nw-2044374842.jpg');
+INSERT INTO products (category_id,id,name, description,price, image_url)
+VALUES ('14','2','Shirts', 'Mens Shirts',100, 'https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/28219632/2024/3/12/2f53aaab-40e1-4c5b-8148-6ad150e5f4341710256687634CampusSutraMenClassicOpaqueCheckedCasualShirt2.jpg');
+INSERT INTO products (category_id,id,name, description,price, image_url)
+VALUES ('15','3','Tops', 'Womens Tops',100, 'https://sheetalonlinefashion.in/cdn/shop/files/rk3ii_512.webp?v=1711564676');
+INSERT INTO products (category_id,id,name, description,price, image_url)
+VALUES ('15','4','Tshirts', 'Womens Tshirts',100, 'https://images-cdn.ubuy.co.in/661a098f6a48480b7109589d-womens-boutique-clothing-tops-blouses.jpg');
+INSERT INTO products (category_id,id,name, description,price, image_url)
+VALUES ('16','5','Shorts', 'Kids Shorts',100, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPFolv_4HeTy2-1c-0LJUw_WdDTlTORM13hw&s');
+INSERT INTO products (category_id,id,name, description,price, image_url)
+VALUES ('16','6','Tshirts', 'Kids Tshirts',100, 'https://m.media-amazon.com/images/I/81-1YliDPSL._AC_UY1100_.jpg');
+
+
