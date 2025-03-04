@@ -1,1 +1,53 @@
 
+name: Deploy to Google Cloud
+
+on:
+  push:
+    branches:
+      - backend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Authenticate with Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+
+    - name: Configure Docker to use GCR
+      run: |
+        gcloud auth configure-docker gcr.io
+
+    # --- Deploy MySQL to Google Cloud SQL ---
+    - name: Deploy MySQL Database
+      run: |
+        gcloud sql instances create my-mysql-instance \
+          --database-version=MYSQL_8_4 --tier=db-f1-micro --region=us-central1
+        gcloud sql databases create mydb --instance=my-mysql-instance
+        gcloud sql users create root --password=Test@123 --instance=my-mysql-instance
+
+    # --- Build & Push Backend (Java Microservices) Docker Image ---
+    - name: Build & Push Backend Docker Image
+      run: |
+        docker build -t gcr.io/sincere-blade-452715-r7/myapp:latest -f ecomapp/Dockerfile
+        docker push gcr.io/sincere-blade-452715-r7/myapp:latest
+
+    # --- Deploy to Kubernetes (GKE) ---
+    - name: Get GKE Credentials
+      run: |
+        gcloud container clusters get-credentials my-cluster --zone us-central1-a
+
+    - name: Deploy Backend Service
+      run: |
+        kubectl apply -f k8s/backend-deployment.yaml
+        kubectl apply -f k8s/backend-service.yaml
+
+
