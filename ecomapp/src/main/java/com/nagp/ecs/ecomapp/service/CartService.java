@@ -1,18 +1,21 @@
 package com.nagp.ecs.ecomapp.service;
 
-import com.nagp.ecs.ecomapp.dto.*;
-import com.nagp.ecs.ecomapp.exceptions.CartItemNotExistException;
-import com.nagp.ecs.ecomapp.model.*;
-import com.nagp.ecs.ecomapp.repository.CartRepository;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.*;
-import jakarta.transaction.Transactional;
+import com.nagp.ecs.ecomapp.dto.AddToCartDto;
+import com.nagp.ecs.ecomapp.dto.CartDto;
+import com.nagp.ecs.ecomapp.dto.CartItemDto;
+import com.nagp.ecs.ecomapp.exceptions.CartItemNotExistException;
+import com.nagp.ecs.ecomapp.model.Cart;
+import com.nagp.ecs.ecomapp.model.Product;
+import com.nagp.ecs.ecomapp.model.User;
+import com.nagp.ecs.ecomapp.repository.CartRepository;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
