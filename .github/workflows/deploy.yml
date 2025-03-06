@@ -34,7 +34,7 @@ jobs:
     # --- Build & Push Backend (Java Microservices) Docker Image ---
     - name: Build & Push Backend Docker Image
       run: |
-        docker build -t gcr.io/sincere-blade-452715-r7/myapp:latest -f Dockerfile .
+        docker build -t gcr.io/sincere-blade-452715-r7/myapp:latest -f ecomapp/Dockerfile .
         docker push gcr.io/sincere-blade-452715-r7/myapp:latest
 
     # --- Deploy to Kubernetes (GKE) ---
