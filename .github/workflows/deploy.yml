@@ -18,7 +18,10 @@ jobs:
       
     - name: Checkout Code
       uses: actions/checkout@v3
+      
+    - name: Login to DockerHub Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      
       
     - name: Authenticate with Google Cloud
       uses: google-github-actions/auth@v1
