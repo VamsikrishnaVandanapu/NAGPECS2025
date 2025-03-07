@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
       - name: backend
-        image: gcr.io/sincere-blade-452715-r7/myapp:latest
+        image: vandanapuvamsi/myapp:latest
         ports:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://your-mysql-instance-ip:3306/mydb"
+          value: "jdbc:mysql://34.42.175.222:3306/vamsimysql"
         - name: SPRING_DATASOURCE_USERNAME
-          value: "root"
+          value: "vamsi"
         - name: SPRING_DATASOURCE_PASSWORD
           value: "Test@123"

@@ -27,17 +27,19 @@ jobs:
     - name: Set up Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
 
-    - name: Configure Docker to use GCR
-      run: |
-        gcloud auth configure-docker gcr.io
+    - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: vandanapuvamsi
+          password: Vamsi#007
 
       
   
     # --- Build & Push Backend (Java Microservices) Docker Image ---
     - name: Build & Push Backend Docker Image
       run: |
-        docker build -t gcr.io/sincere-blade-452715-r7/myapp:latest -f ecomapp/Dockerfile .
-        docker push gcr.io/sincere-blade-452715-r7/myapp:latest
+        docker build -t vandanapuvamsi/myapp:latest -f ecomapp/Dockerfile .
+        docker push vandanapuvamsi/myapp:latest
 
     # --- Deploy to Kubernetes (GKE) ---
     - name: Get GKE Credentials
