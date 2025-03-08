@@ -43,7 +43,11 @@ jobs:
     - name: Get GKE Credentials
       run: |
         gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1 --project sincere-blade-452715-r7
-
+        
+         - name: Install GKE auth plugin
+      run: |
+          gcloud components install gke-gcloud-auth-plugin
+          
     - name: Deploy Backend Service
       run: |
         kubectl apply -f k8s/backend-deployment.yaml
