@@ -42,7 +42,7 @@ jobs:
     # --- Deploy to Kubernetes (GKE) ---
     - name: Get GKE Credentials
       run: |
-        gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1 --project sincere-blade-452715-r7
+        gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1 --project sincere-blade-452715-r7 --set-env-vars DB_USERNAME=${{ secrets.DB_USERNAME }},DB_PASSWORD=${{ secrets.DB_PASSWORD }},INSTANCE_CONNECTION_NAME=${{ secrets.INSTANCE_CONNECTION_NAME }}
         
     - name: Install GKE auth plugin
       run: |

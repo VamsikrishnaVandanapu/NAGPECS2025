@@ -17,10 +17,4 @@ spec:
         image: vandanapuvamsi/myapp:latest
         ports:
         - containerPort: 8080
-        env:
-        - name: SPRING_DATASOURCE_URL
-          value: "jdbc:mysql://34.42.175.222:3306/vamsimysql"
-        - name: SPRING_DATASOURCE_USERNAME
-          value: "vamsi"
-        - name: SPRING_DATASOURCE_PASSWORD
-          value: "Test@123"
+     
