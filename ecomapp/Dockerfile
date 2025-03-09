@@ -2,7 +2,7 @@ FROM maven:3.8.5-openjdk-17 as builder
 WORKDIR /ecomapp
 COPY pom.xml .
 RUN mvn dependency:go-offline
-COPY src/ ./src/
+COPY ecomapp/src/ ./src/
 RUN mvn clean package -DskipTests=true
 
 
