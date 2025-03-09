@@ -10,7 +10,8 @@ RUN mvn clean package -DskipTests=true
 
 # Start with a base image - in this case JDK 8 Alpine
 FROM openjdk:17-jdk-alpine
-RUN mkdir ecomapp/target
+WORKDIR /ecomapp
+RUN mkdir /target
 # Copy the JAR
 COPY --from=builder /ecomapp/target/*.jar app.jar
 EXPOSE 8080
