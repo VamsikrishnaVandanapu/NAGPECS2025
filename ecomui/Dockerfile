@@ -1,5 +1,7 @@
 # Use Node.js for building the app
-FROM node:22.11.0-alpine
+FROM alpine:3.21
+ENV NODE_VERSION 22.14.0
+
 WORKDIR /ecomui
 COPY ecomui/package.json ecomui/package-lock.json ./
 RUN npm install
