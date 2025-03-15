@@ -33,7 +33,7 @@ jobs:
 
         
   
-    # --- Build & Push Frontend (Java Microservices) Docker Image ---
+    # --- Build & Push Frontend (Vue.js) Docker Image ---
     - name: Build & Push Frontend Docker Image
       run: |
         docker build -t vandanapuvamsi/myvueapp:latest -f ecomapp/Dockerfile .
@@ -51,7 +51,7 @@ jobs:
           
     - name: Deploy to Cloud Run
       run: |
-          gcloud run deploy vue-app \
+          gcloud run deploy myvueapp \
             --image vandanapuvamsi/myvueapp:latest \
             --platform managed \
             --region us-central1 \
