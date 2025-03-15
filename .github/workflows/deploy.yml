@@ -1,0 +1,60 @@
+
+name: Deploy Vue to Cloud Run
+
+on:
+  push:
+    branches:
+      - frontend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    
+    
+
+    steps:
+    
+      
+    - name: Checkout Code
+      uses: actions/checkout@v3
+      
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      
+      
+    - name: Authenticate with Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+
+        
+  
+    # --- Build & Push Frontend (Java Microservices) Docker Image ---
+    - name: Build & Push Frontend Docker Image
+      run: |
+        docker build -t vandanapuvamsi/myvueapp:latest -f ecomapp/Dockerfile .
+        docker push vandanapuvamsi/myvueapp:latest
+        
+
+    # --- Deploy to Kubernetes (GKE) ---
+    - name: Get GKE Credentials
+      run: |
+        gcloud container clusters get-credentials autopilot-cluster-1 --region us-central1 --project sincere-blade-452715-r7
+        
+    - name: Install GKE auth plugin
+      run: |
+          gcloud components install gke-gcloud-auth-plugin
+          
+    - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy vue-app \
+            --image vandanapuvamsi/myvueapp:latest \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated
+
+
