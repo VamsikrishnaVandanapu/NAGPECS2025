@@ -10,6 +10,6 @@ RUN npm run build
 
 # Use Nginx for serving the app
 FROM nginx:1.26.3-alpine-slim
-COPY  ecomui/dist /usr/share/nginx/html
-EXPOSE 8081
+COPY --from=build /ecomui/dist /usr/share/nginx/html
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
