@@ -36,7 +36,7 @@ jobs:
     # --- Build & Push Frontend (Vue.js) Docker Image ---
     - name: Build & Push Frontend Docker Image
       run: |
-        docker build -t vandanapuvamsi/myvueapp:latest -f ecomapp/Dockerfile .
+        docker build -t vandanapuvamsi/myvueapp:latest -f ecomui/Dockerfile .
         docker push vandanapuvamsi/myvueapp:latest
         
 
