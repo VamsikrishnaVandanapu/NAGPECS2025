@@ -1,0 +1,13 @@
+# Use Node.js for building the app
+FROM node:22 AS build
+WORKDIR /ecomui
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Use Nginx for serving the app
+FROM nginx:alpine
+COPY --from=build /ecomui/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
