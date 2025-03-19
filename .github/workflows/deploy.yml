@@ -49,7 +49,7 @@ jobs:
       run: |
           gcloud components install gke-gcloud-auth-plugin
           
-     - name: Deploy Frontend Service
+    - name: Deploy Frontend Service
       run: |
         kubectl apply -f k8s/frontend-deployment.yaml
         kubectl apply -f k8s/frontend-service.yaml
