@@ -2,8 +2,9 @@
 FROM node:22 as build
 #FROM alpine:3.21 
 #ENV NODE_VERSION 22.14.0
+#WORKDIR /ecomui
 
-WORKDIR /ecomui
+WORKDIR ecomui
 COPY ecomui/package.json ecomui/package-lock.json ./
 RUN npm install
 COPY . .
