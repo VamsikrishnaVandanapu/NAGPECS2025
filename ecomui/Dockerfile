@@ -1,6 +1,7 @@
 # Use Node.js for building the app
-FROM alpine:3.21
-ENV NODE_VERSION 22.14.0
+FROM node:22 as build
+#FROM alpine:3.21 
+#ENV NODE_VERSION 22.14.0
 
 WORKDIR /ecomui
 COPY ecomui/package.json ecomui/package-lock.json ./
@@ -10,6 +11,7 @@ RUN npm run build
 
 # Use Nginx for serving the app
 FROM nginx:1.26.3-alpine-slim
-ADD  ecomui/dist /usr/share/nginx/html
+#ADD  ecomui/dist /usr/share/nginx/html
+COPY --from=build /ecomui/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
