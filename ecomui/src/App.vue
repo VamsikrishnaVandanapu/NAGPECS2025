@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       //baseURL: 'https://limitless-lake-55070.herokuapp.com/',
-      baseURL: "http://34.16.124.99/",
+      baseURL: "http://35.232.108.126/",
       products: null,
       categories: null,
       key: 0,
