@@ -1,5 +1,5 @@
 
-name: Deploy Vue to Cloud Run
+name: Deploy Vue to Cloud 
 
 on:
   push:
@@ -36,7 +36,7 @@ jobs:
     # --- Build & Push Frontend (Vue.js) Docker Image ---
     - name: Build & Push Frontend Docker Image
       run: |
-        docker build -t vandanapuvamsi/myvueapp:latest -f ecomui/Dockerfile .
+        docker build -t vandanapuvamsi/myvueapp:latest -f ecomui/Docker1file .
         docker push vandanapuvamsi/myvueapp:latest
         
 
@@ -49,11 +49,8 @@ jobs:
       run: |
           gcloud components install gke-gcloud-auth-plugin
           
-    - name: Deploy to Cloud Run
+     - name: Deploy Frontend Service
       run: |
-          gcloud run deploy myvueapp \
-            --image vandanapuvamsi/myvueapp:latest \
-            --platform managed \
-            --region us-central1 \
-            --allow-unauthenticated
+        kubectl apply -f k8s/frontend-deployment.yaml
+        kubectl apply -f k8s/frontend-service.yaml
 
