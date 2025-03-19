@@ -39,11 +39,6 @@ jobs:
         docker build -t vandanapuvamsi/myapp:latest -f ecomapp/Dockerfile .
         docker push vandanapuvamsi/myapp:latest
         
-       # --- Build & Push Backend (Java Microservices) Docker Image ---
-    - name: Build & Push Backend Docker Image
-      run: |
-        docker build -t gcr.io/sincere-blade-452715-r7/myapp:latest -f ecomapp/Dockerfile
-        docker push gcr.io/sincere-blade-452715-r7/myapp:latest
 
     # --- Deploy to Kubernetes (GKE) ---
     - name: Get GKE Credentials
